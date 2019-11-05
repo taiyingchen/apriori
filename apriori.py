@@ -12,6 +12,10 @@ def read_input():
     return TDB, min_support
 
 
+def print_output():
+    pass
+
+
 class Apriori():
     def __init__(self, TDB, min_support):
         self.TDB = TDB
@@ -60,11 +64,48 @@ class Apriori():
             self.freq_itemsets[k+1] = self.generate_freq_itemsets(k+1) # frequent itemset generation
             k += 1
 
+    def get_all_freq_itemsets(self):
+        all_freq_itemsets = Counter()
+        for k in self.freq_itemsets:
+            all_freq_itemsets += self.freq_itemsets[k]
+        return all_freq_itemsets
+
+
+def extract_closed_itemsets(itemsets):
+    closed_itemsets = {}
+    all_itemsets = set(itemsets.keys())
+    for itemset_x in itemsets:
+        is_closed_itemset = True
+        for itemset_y in all_itemsets:
+            if itemset_x != itemset_y and itemset_y.issuperset(itemset_x) and itemsets[itemset_y] == itemsets[itemset_x]:
+                 is_closed_itemset = False
+        if is_closed_itemset:
+            closed_itemsets[itemset_x] = itemsets[itemset_x]
+    return closed_itemsets
+
+
+def extract_max_itemsets(itemsets):
+    max_itemsets = {}
+    all_itemsets = set(itemsets.keys())
+    for itemset_x in itemsets:
+        is_max_itemset = True
+        for itemset_y in all_itemsets:
+            if itemset_x != itemset_y and itemset_y.issuperset(itemset_x):
+                 is_max_itemset = False
+        if is_max_itemset:
+            max_itemsets[itemset_x] = itemsets[itemset_x]
+    return max_itemsets
+
+
 def main():
     TDB, min_support = read_input()
     apriori = Apriori(TDB, min_support)
     apriori.compute()
+    freq_itemsets = apriori.get_all_freq_itemsets()
+    closed_itemsets = extract_closed_itemsets(freq_itemsets)
+    max_itemsets = extract_max_itemsets(freq_itemsets)
     pass
-    
+
+
 if __name__ == '__main__':
     main()
