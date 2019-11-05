@@ -2,7 +2,7 @@ from sys import stdin
 
 
 def read_input():
-    min_support = int(input())
+    min_support = int(stdin.readline())
     TDB = []
     for tran in stdin:
         TDB.append(tran.strip().split())
