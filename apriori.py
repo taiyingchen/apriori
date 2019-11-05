@@ -17,8 +17,7 @@ def print_output():
 
 
 class Apriori():
-    def __init__(self, TDB, min_support):
-        self.TDB = TDB
+    def __init__(self, min_support):
         self.min_support = min_support
         self.freq_itemsets = {}
         self.cand_itemsets = {}
@@ -56,7 +55,8 @@ class Apriori():
         freq_itemset = Counter(freq_itemset)
         return freq_itemset
         
-    def compute(self):
+    def compute(self, TDB):
+        self.TDB = TDB
         k = 1
         self.freq_itemsets[k] = self.generate_freq_itemsets(k) # frequent 1-itemset
         while self.freq_itemsets[k]:
@@ -99,8 +99,8 @@ def extract_max_itemsets(itemsets):
 
 def main():
     TDB, min_support = read_input()
-    apriori = Apriori(TDB, min_support)
-    apriori.compute()
+    apriori = Apriori(min_support)
+    apriori.compute(TDB)
     freq_itemsets = apriori.get_all_freq_itemsets()
     closed_itemsets = extract_closed_itemsets(freq_itemsets)
     max_itemsets = extract_max_itemsets(freq_itemsets)
