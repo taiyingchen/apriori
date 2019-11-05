@@ -13,11 +13,10 @@ def read_input():
 
 
 def print_output(itemsets):
-    itemset_list = [(support, ' '.join(itemset)) for itemset, support in itemsets.items()]
+    itemset_list = [(support, sorted(list(itemset))) for itemset, support in itemsets.items()]
     itemset_list = sorted(itemset_list, key=lambda x: (-x[0], x[1]))
     for support, itemset in itemset_list:
-        print(f'{support}: {itemset}')
-    print()
+        print(f'{support}: {" ".join(itemset)}')
 
 
 class Apriori():
@@ -110,7 +109,9 @@ def main():
     max_itemsets = extract_max_itemsets(freq_itemsets)
 
     print_output(freq_itemsets)
+    print()
     print_output(closed_itemsets)
+    print()
     print_output(max_itemsets)
 
 
