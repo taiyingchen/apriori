@@ -12,8 +12,12 @@ def read_input():
     return TDB, min_support
 
 
-def print_output():
-    pass
+def print_output(itemsets):
+    itemset_list = [(support, ' '.join(itemset)) for itemset, support in itemsets.items()]
+    itemset_list = sorted(itemset_list, key=lambda x: (-x[0], x[1]))
+    for support, itemset in itemset_list:
+        print(f'{support}: {itemset}')
+    print()
 
 
 class Apriori():
@@ -104,7 +108,10 @@ def main():
     freq_itemsets = apriori.get_all_freq_itemsets()
     closed_itemsets = extract_closed_itemsets(freq_itemsets)
     max_itemsets = extract_max_itemsets(freq_itemsets)
-    pass
+
+    print_output(freq_itemsets)
+    print_output(closed_itemsets)
+    print_output(max_itemsets)
 
 
 if __name__ == '__main__':
