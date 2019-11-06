@@ -1,6 +1,5 @@
 from collections import Counter
 from itertools import combinations
-from sys import stdin
 
 
 class Apriori():
@@ -150,6 +149,7 @@ def extract_closed_itemsets(itemsets):
         for itemset_y in all_itemsets:
             if itemset_x != itemset_y and itemset_y.issuperset(itemset_x) and itemsets[itemset_y] == itemsets[itemset_x]:
                 is_closed_itemset = False
+                break
         if is_closed_itemset:
             closed_itemsets[itemset_x] = itemsets[itemset_x]
     return closed_itemsets
@@ -171,6 +171,7 @@ def extract_max_itemsets(itemsets):
         for itemset_y in all_itemsets:
             if itemset_x != itemset_y and itemset_y.issuperset(itemset_x):
                 is_max_itemset = False
+                break
         if is_max_itemset:
             max_itemsets[itemset_x] = itemsets[itemset_x]
     return max_itemsets
