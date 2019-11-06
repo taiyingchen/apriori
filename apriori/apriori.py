@@ -10,7 +10,7 @@ class Apriori():
     Parameters
     ----------
     min_support : int
-        Minimum support threshold
+        Minimum support threshold.
         If the support of an itemset is above this minimum support threshold,
         then it is a frequent itemset.
     """
@@ -108,12 +108,12 @@ class Apriori():
         # self.TDB = TDB
         self.TDB = [set(tran) for tran in TDB]
         k = 1
-        self.freq_itemsets[k] = self.generate_freq_itemsets(
-            k)  # frequent 1-itemset
+        # Frequent 1-itemset
+        self.freq_itemsets[k] = self.generate_freq_itemsets(k)
         while self.freq_itemsets[k]:
-            # candidate generation
+            # Candidate generation
             self.cand_itemsets[k+1] = self.generate_cand_itemsets(k+1)
-            # frequent itemset generation
+            # Derive frequent itemsets from candidates
             self.freq_itemsets[k+1] = self.generate_freq_itemsets(k+1)
             k += 1
 
