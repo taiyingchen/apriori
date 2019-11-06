@@ -9,7 +9,7 @@ Apriori is an algorithm for frequent item set mining and association rule learni
 ```bash
 git clone https://github.com/taiyingchen/apriori.git
 cd apriori/
-pip install .
+pip3 install .
 ```
 
 ### Dependecies
