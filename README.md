@@ -1,6 +1,6 @@
 # Apriori
 
-An efficient Python implementation of Apriori algorithm using in-build python modules and frozenset data structure to accelerate performance.
+An efficient Python implementation of Apriori algorithm using built-in modules and frozenset data structure to accelerate performance.
 
 ## Installation
 
