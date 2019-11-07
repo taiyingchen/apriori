@@ -85,7 +85,7 @@ class Apriori():
         if k == 1:
             for tran in self.TDB:
                 for item in tran:
-                    counter[item] += 1
+                    counter[frozenset({item})] += 1
         else:
             for tran in self.TDB:
                 for itemset in self.cand_itemsets[k]:
