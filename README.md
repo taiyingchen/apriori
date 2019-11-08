@@ -12,7 +12,7 @@ cd apriori/
 pip3 install .
 ```
 
-### Dependecies
+### Dependencies
 
 Required only Python (>= 3.6)
 
