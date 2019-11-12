@@ -105,7 +105,6 @@ class Apriori():
             TDB stands for transactional database.
             Each row is a transaction with multiple items (strings).
         """
-        # self.TDB = TDB
         self.TDB = [set(tran) for tran in TDB]
         k = 1
         # Frequent 1-itemset
