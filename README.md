@@ -18,7 +18,7 @@ Required only Python (>= 3.6)
 
 ## Usage
 
-`TDB` stands for transactional database. Each element in `TDB` is an transaction containing all items associated with it.
+`TDB` stands for transactional database. Each element in `TDB` is a transaction containing all items associated with it.
 
 ```python
 from apriori import Apriori
